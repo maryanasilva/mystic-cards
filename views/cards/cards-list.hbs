@@ -1,0 +1,18 @@
+<div class="container">
+    <div class="row">
+        {{#each cards}}
+            <div class="col-3">
+                <div class="card" style="width: 18rem;">
+                    <img
+                        src="{{image_uris.normal}}"
+                        class="card-img-top"
+                        alt="{{name}}"
+                    />
+                    <div class="card-body">
+                        <h5 class="card-title">{{name}}</h5>
+                    </div>
+                </div>
+            </div>
+        {{/each}}
+    </div>
+</div>
