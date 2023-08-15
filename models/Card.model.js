@@ -3,7 +3,13 @@ const { Schema, model } = mongoose;
 
 const cardSchema = new Schema({
     name: String,
+    type_line: String,
+    rarity: String,
+    oracle_text: String,
+    flavor_text: String,
+    artist: String,
     released_at: String,
+    collector_number: String,
     image_uris: {
         small: String,
         normal: String,
@@ -12,11 +18,8 @@ const cardSchema = new Schema({
         art_crop: String,
         border_crop: String,
     },
-    rarity: String,
-    artist: String,
     colors: [String],
     color_identity: { String },
-    oracle_text: String,
     type_line: String,
     mana_cost: String,
     //prices: Object String

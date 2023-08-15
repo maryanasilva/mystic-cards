@@ -1,16 +1,14 @@
-<div class="container">
-    <div class="row">
+<div class="container d-flex">
+    <div class="row d-flex">
         {{#each cards}}
-            <div class="col-3">
-                <div class="card" style="width: 18rem;">
+            <div class="col-3 mt-3 border border-dark">
+                <div class="card" style="width: 16rem;">
                     <img
                         src="{{image_uris.normal}}"
                         class="card-img-top"
                         alt="{{name}}"
                     />
-                    <div class="card-body">
-                        <h5 class="card-title">{{name}}</h5>
-                    </div>
+                    <a href="/cards/{{_id}}" class="btn btn-primary">See more!</a>
                 </div>
             </div>
         {{/each}}
