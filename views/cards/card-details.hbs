@@ -1,0 +1,43 @@
+<div class="container">
+    <div class="row-10 mt-3 d-flex border border-dark">
+        <div class="col-3 border border-dark">
+            <div class="card" style="width: 20rem;">
+                <img
+                    src="{{card.image_uris.large}}"
+                    class="card-img-top"
+                    alt="{{card.name}}"
+                />
+            </div>
+        </div>
+        <div class="col=6 mt-3 ms-3 border border-dark">
+            <div class="row-6">
+                <h3>{{card.name}}</h3>
+                <h4>{{card.type_line}}</h4>
+                <h4>{{card.rarity}}</h4>
+                <p>{{card.oracle_text}}</p>
+                <p>{{card.flavor_text}}</p>
+                <p>{{card.artist}}</p>
+                <p>{{card.released_at}}</p>
+                <p>Collector number: {{card.collector_number}}</p>
+            </div>
+
+        </div>
+    </div>
+    <div class="row">
+        <!-- ............................................................... -->
+        <!-- Review Section -->
+        <h2>Reviews</h2>
+        <!-- Form to Create a Review -->
+        <form action="/review/create/{{card._id}}" method="post">
+            <select name="author">
+                {{#each users}}
+                    <option value="{{_id}}">{{username}}</option>
+                {{/each}}
+                <!-- albums.[0] -->
+            </select>
+            <label for="content">Content</label>
+            <textarea name="content" id="content" cols="30" rows="3"></textarea>
+            <button type="submit">Create the review</button>
+        </form>
+    </div>
+</div>
