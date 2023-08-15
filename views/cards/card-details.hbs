@@ -24,6 +24,20 @@
         </div>
     </div>
     <div class="row">
+        <!-- ............................................................... -->
+        <!-- Review Section -->
         <h2>Reviews</h2>
+        <!-- Form to Create a Review -->
+        <form action="/review/create/{{card._id}}" method="post">
+            <select name="author">
+                {{#each users}}
+                    <option value="{{_id}}">{{username}}</option>
+                {{/each}}
+                <!-- albums.[0] -->
+            </select>
+            <label for="content">Content</label>
+            <textarea name="content" id="content" cols="30" rows="3"></textarea>
+            <button type="submit">Create the review</button>
+        </form>
     </div>
 </div>
