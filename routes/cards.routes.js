@@ -93,4 +93,7 @@ router.post("/cards/:reviewId", async (req, res) => {
     res.redirect("/cards");
 });
 
+// Function aux
+
+
 module.exports = router;
