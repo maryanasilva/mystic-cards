@@ -24,20 +24,34 @@
         </div>
     </div>
     <div class="row">
-        <!-- ............................................................... -->
-        <!-- Review Section -->
-        <h2>Reviews</h2>
-        <!-- Form to Create a Review -->
-        <form action="/review/create/{{card._id}}" method="post">
-            <select name="author">
-                {{#each users}}
-                    <option value="{{_id}}">{{username}}</option>
-                {{/each}}
-                <!-- albums.[0] -->
-            </select>
-            <label for="content">Content</label>
-            <textarea name="content" id="content" cols="30" rows="3"></textarea>
-            <button type="submit">Create the review</button>
-        </form>
+        {{#if user}}
+            <!-- Review Section -->
+            <h4>Leave a Review!</h4>
+            <!-- Form to Create a Review -->
+            <form action="/review/create/{{card._id}}" method="post">
+                <label for="content">Content</label>
+                <textarea
+                    name="content"
+                    id="content"
+                    cols="30"
+                    rows="3"
+                ></textarea>
+                <button type="submit">Create the review</button>
+            </form>
+            <!-- End of the Form to Create a Review -->
+        {{/if}}
+
+        <div class="container mt-4">
+            <h1>Reviews</h1>
+            {{#each card.reviews}}
+                <div class="col border">
+                    <h6>{{author.username}}</h6>
+                </div>
+                <div class="col border">
+                    <p>{{content}}</p>
+                </div>
+            {{/each}}
+        </div>
+        <br />
     </div>
 </div>

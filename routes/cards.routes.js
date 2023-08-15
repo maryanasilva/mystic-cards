@@ -3,6 +3,8 @@ const router = express.Router();
 
 // CARD MODEL
 const Card = require("../models/Card.model");
+const User = require("../models/User.model");
+const Review = require("../models/Review.model");
 
 router.get("/cards", async (req, res) => {
     try {
@@ -22,16 +24,13 @@ router.get("/cards", async (req, res) => {
 router.get("/cards/:id", async (req, res) => {
     try {
         // Get user
-        const users = await User.find();
+        const user = req.session.currentUser;
         // Get CARD ID
         const { id } = req.params;
 
         // Found card
-        let chosenCard = await Card.findById(id);
-
-        await foundBook.populate("reviews author");
-
-        await foundBook.populate({
+        let chosenCard = await Card.findById(id).populate("reviews");
+        await chosenCard.populate({
             path: "reviews",
             populate: {
                 path: "author",
@@ -39,11 +38,15 @@ router.get("/cards/:id", async (req, res) => {
             },
         });
 
+        console.log(chosenCard);
+
+        // current User
+
         /*// Test chosen card
         console.log(chosenCard);
         */
 
-        res.render("cards/card-details.hbs", { card: chosenCard, users });
+        res.render("cards/card-details.hbs", { card: chosenCard, user });
     } catch (error) {
         console.log(error);
     }
@@ -54,18 +57,19 @@ router.post("/review/create/:cardId", async (req, res) => {
     try {
         const { cardId } = req.params;
 
-        const { content, author } = req.body;
+        const { content } = req.body;
+        const user = req.session.currentUser;
 
-        const newReview = await Review.create({ content, author });
+        const newReview = await Review.create({ content });
 
         // Update the book with new review that was created
-        const cardUpdate = await Book.findByIdAndUpdate(cardId, {
+        await Card.findByIdAndUpdate(cardId, {
             $push: { reviews: newReview._id },
         });
 
-        // add the review to the user
-        const userUpdate = await User.findByIdAndUpdate(author, {
-            $push: { reviews: newReview._id },
+        // add the user to the review
+        await Review.findByIdAndUpdate(newReview._id, {
+            $push: { author: user._id },
         });
 
         res.redirect(`/cards/${cardId}`);
