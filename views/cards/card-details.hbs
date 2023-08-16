@@ -62,6 +62,15 @@
                 <div class="col border">
                     <p>{{content}}</p>
                 </div>
+                <div>
+                    {{#eq ../user.id author._id }}
+                        <h3>False</h3>
+                    {{else}}
+                        <h3>True</h3>
+                    {{/eq}}
+                    {{author._id}}
+                    {{../user._id}}
+                </div>
             {{/each}}
         </div>
         <br />
