@@ -38,6 +38,18 @@
                 ></textarea>
                 <button type="submit">Create the review</button>
             </form>
+            {{#if isFav}}
+                <form action="/favourite/remove/{{card._id}}" method="post">
+                    <button type="submit"><i class="bi bi-bookmark-star-fill">
+                        </i></button>
+                </form>
+            {{else}}
+                <form action="/favourite/add/{{card._id}}" method="post">
+                    <button type="submit"><i
+                            class="bi bi-bookmark-star"
+                        ></i></button>
+                </form>
+            {{/if}}
             <!-- End of the Form to Create a Review -->
         {{/if}}
 
