@@ -12,6 +12,11 @@ const express = require("express");
 // Handles the handlebars
 // https://www.npmjs.com/package/hbs
 const hbs = require("hbs");
+// equal
+hbs.registerHelper("eq", function (a, b) {
+    var next = arguments[arguments.length - 1];
+    return a === b ? next.fn(this) : next.inverse(this);
+});
 
 const app = express();
 
