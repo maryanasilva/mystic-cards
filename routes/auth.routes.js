@@ -155,9 +155,10 @@ router.get("/logout", isLoggedIn, (req, res) => {
   });
 });
 
-/* GET How to Play Page */
+/* GET Profile Page */
 router.get("/profile", isLoggedIn, (req, res) => {
   const user = req.session.currentUser;
+  console.log(user);
   res.render("auth/user-profile", {
     userInSession: req.session.currentUser,
     layout: "layout-login.hbs",
