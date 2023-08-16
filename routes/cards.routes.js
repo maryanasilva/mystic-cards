@@ -38,8 +38,6 @@ router.get("/cards/:id", async (req, res) => {
             },
         });
 
-        console.log(chosenCard);
-
         // current User
 
         /*// Test chosen card
@@ -60,9 +58,9 @@ router.post("/review/create/:cardId", async (req, res) => {
         const { content } = req.body;
         const user = req.session.currentUser;
 
-        const newReview = await Review.create({ content });
+        let newReview = await Review.create({ content });
 
-        // Update the book with new review that was created
+        // Update the card with new review that was created
         await Card.findByIdAndUpdate(cardId, {
             $push: { reviews: newReview._id },
         });
@@ -72,28 +70,68 @@ router.post("/review/create/:cardId", async (req, res) => {
             $push: { author: user._id },
         });
 
+        // add the card to the review
+        await Review.findByIdAndUpdate(newReview._id, {
+            $push: { card_object: cardId },
+        });
+
+        // add review to the user
+        await User.findByIdAndUpdate(user._id, {
+            $push: { reviews: newReview._id },
+        });
+
         res.redirect(`/cards/${cardId}`);
     } catch (error) {
         console.log(error);
     }
 });
 
-// DELETE REVIEW
-router.post("/cards/:reviewId", async (req, res) => {
+/** MY REVIEWS **/
+
+router.get("/myReviews", async (req, res) => {
+    try {
+        // Get info user
+        let user = req.session.currentUser;
+        // Get reviews to cards
+        user = await User.findById(user._id).populate("reviews");
+
+        await user.populate({
+            path: "reviews",
+            populate: {
+                path: "card_object",
+                model: "Card",
+            },
+        });
+
+        res.render("cards/my-reviews.hbs", { reviews: user.reviews });
+    } catch (error) {
+        console.log(error);
+    }
+});
+
+router.post("/review/delete/:reviewId", async (req, res) => {
     const { reviewId } = req.params;
     try {
-        const removeReview = await Review.findByIdAndDelete(reviewId);
+        // Remove Review from reviews
+        const removedReview = await Review.findByIdAndDelete(reviewId);
+
+        // Remove Review from User
         await User.findByIdAndUpdate(removedReview.author, {
-            $pull: { reviews: removeReview._id },
+            $pull: { reviews: removedReview._id },
+        });
+
+        // Get id card
+        const idCard = removedReview.card_object._id;
+
+        // Remove Review from Card
+        await Card.findByIdAndUpdate(idCard, {
+            $pull: { reviews: removedReview._id },
         });
     } catch (error) {
         console.log(error);
     }
 
-    res.redirect("/cards");
+    res.redirect("/myReviews");
 });
-
-// Function aux
-
 
 module.exports = router;
