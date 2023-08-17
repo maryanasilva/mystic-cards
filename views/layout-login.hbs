@@ -60,13 +60,17 @@
                   User
                 </a>
                 <ul class="dropdown-menu">
-                  <li><a
-                      class="dropdown-item"
-                      href="/auth/profile"
-                    >Profile</a></li>
-                  <li><a class="dropdown-item" href="/myReviews">My Reviews</a></li>
-                  <li><a class="dropdown-item" href="/myFavourites">My
-                      Favourites</a></li>
+                  <li><a class="dropdown-item" href="/auth/profile"><i
+                        class="bi bi-person-vcard fa-10x"
+                      ></i>
+                      {{! Profile }}</a></li>
+                  <li><a class="dropdown-item" href="/myReviews"><i
+                        class="bi bi-card-text"
+                      ></i>{{! My Reviews }}</a></li>
+                  <li><a class="dropdown-item" href="/myFavourites"><i
+                        class="bi bi-bookmark-star"
+                      ></i>
+                      {{! My Favourites }}</a></li>
                 </ul>
               </li>
               <li class="nav-item">
@@ -77,6 +81,128 @@
         </div>
       </nav>
     </section>
+
+    {{!--     <section>
+      <nav
+        {{! class="navbar navbar-expand-lg bg-warning bg-body-tertiary text-light fixed-top pt-2 pb-2" }}
+      >
+        <div class="container-fluid">
+          <div class="row">
+            <div
+              class="col-1"
+              style="background-color: rgb(244, 171, 119)
+            ;"
+            >
+              <a class="row nav-link" href="/">Walk in Magic</a>
+              <button
+                class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarNav"
+                aria-controls="navbarNav"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+              >
+                <span class="navbar-toggler-icon"></span>
+              </button>
+            </div>
+            <div
+              class="col-1"
+              style="background-color: rgb(244, 171, 119)
+            ;"
+            >
+              <a class="row nav-link" href="/how-to-play">How to Play</a>
+              <div class="row"></div>
+            </div>
+            <div
+              class="col-1"
+              style="background-color: rgb(244, 171, 119)
+            ;"
+            >
+              <a class="nav-link" href="/cards">Cards</a>
+            </div>
+            <div
+              class="col-1"
+              style="background-color: rgb(244, 171, 119)
+            ;"
+            >
+            </div>
+            <div
+              class="col-1"
+              style="background-color: rgb(244, 171, 119)
+            ;"
+            >
+            </div>
+            <div
+              class="col-1"
+              style="background-color: rgb(244, 171, 119)
+            ;"
+            >
+            </div>
+            <div
+              class="col-1"
+              style="background-color: rgb(244, 171, 119)
+            ;"
+            >
+            </div>
+            <div
+              class="col-1"
+              style="background-color: rgb(244, 171, 119)
+            ;"
+            >
+            </div>
+            <div
+              class="col-1"
+              style="background-color: rgb(244, 171, 119)
+            ;"
+            >
+            </div>
+            <div
+              class="col-1"
+              style="background-color: rgb(244, 171, 119)
+            ;"
+            >
+            </div>
+            <div
+              class="col-1"
+              style="background-color: rgb(244, 171, 119)
+            ;"
+            >
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  <i class="bi bi-file-person"></i>
+                  User
+                </a>
+                <ol class="dropdown-menu">
+                  <li><a class="dropdown-item" href="/auth/profile"><i
+                        class="bi bi-person-vcard fa-10x"
+                      ></i>{{! Profile }}</a></li>
+                  <li><a class="dropdown-item" href="/myReviews"><i
+                        class="bi bi-card-text"
+                      ></i>{{! My Reviews }}</a></li>
+                  <li><a class="dropdown-item" href="/myFavourites"><i
+                        class="bi bi-bookmark-star"
+                      ></i>{{! My Favourites }}</a></li>
+                </ol>
+              </li>
+            </div>
+            <div
+              class="col-1"
+              style="background-color: rgb(244, 171, 119)
+            ;"
+            >
+              <a class="nav-link" href="/auth/logout">Log Out</a>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </section> --}}
 
     {{{body}}}
 

@@ -1,24 +1,21 @@
-<h1>{{user.email}}This your favourites cards! </h1>
+<h1 class="text-center mt-5">These are your Favourites!</h1>
 <div class="container">
-    <div class="container mt-5 row d-flex">
-        {{#each favourites}}
-            <div class="col-3 border text-center">
-                <div class="row border d-flex justify-content-center">
-                    <div class="row" style="width: 14rem">
-                        <img src="{{image_uris.normal}}" />
-                    </div>
-                </div>
+  <div class="container mt-5 row d-flex">
+    {{#each favourites}}
+      <div class="col-3 border text-center">
+        <div class="row border d-flex justify-content-center">
+          <div class="row" style="width: 14rem">
+            <img src="{{image_uris.normal}}" />
+          </div>
+        </div>
 
-            </div>
-            <div class="row">
-                <form action="/favourite/removeFromFav/{{_id}}" method="post">
-                    <button type="submit"><i
-                            class="bi bi-bookmark-star"
-                        ></i></button>
-                </form>
-            </div>
-            <a href="/cards/{{_id}}" class="btn btn-secondary">More details!</a>
-        {{/each}}
-    </div>
-
+      </div>
+      <div class="row">
+        <form action="/favourite/removeFromFav/{{_id}}" method="post">
+          <button type="submit"><i class="bi bi-bookmark-star"></i></button>
+        </form>
+      </div>
+      <a href="/cards/{{_id}}" class="btn btn-secondary">More details!</a>
+    {{/each}}
+  </div>
 </div>

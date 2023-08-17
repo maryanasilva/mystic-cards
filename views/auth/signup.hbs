@@ -1,21 +1,67 @@
 <div id="form">
-  <h2>Sign Up</h2>
-  <form action="/auth/signup" method="POST">
+  <h2 class="text-center fw-bolder mt-5">Sign Up</h2>
+  {{!--   <form action="/auth/signup" method="POST">
 
-    <label> Username
+    <label>
+      Username
       <input type="text" name="username" placeholder="Your username" />
     </label>
 
-    <label> Email
+    <label>
+      Email
       <input type="email" name="email" placeholder="Your email" />
     </label>
 
-    <label> Password
+    <label>
+      Password
       <input type="password" name="password" placeholder="Your password" />
     </label>
 
     <button type="submit">Sign Up</button>
 
+    {{#if errorMessage}}
+      <p class="error">{{errorMessage}}</p>
+    {{/if}}
+  </form> --}}
+
+  <form action="/auth/signup" method="POST">
+    <div class="d-grid gap-2 col-6 col-6 mx-auto mt-5">
+      <div class="mb-3">
+        <label for="text" class="form-label">Username</label>
+        <input
+          type="text"
+          class="form-control"
+          name="username"
+          placeholder="Your username"
+        />
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Email address</label>
+        <input
+          type="email"
+          name="email"
+          class="form-control"
+          placeholder="Your email"
+        />
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Password</label>
+        <input
+          type="password"
+          name="password"
+          class="form-control"
+          placeholder="Your Password"
+        />
+        <div class="col-auto">
+          <span id="passwordHelpInline" class="form-text">
+            Must have more than 6 characters.
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="d-grid gap-1 col-1 mx-auto">
+      <button type="submit" class="btn btn-outline-warning">Submit</button>
+    </div>
 
     {{#if errorMessage}}
       <p class="error">{{errorMessage}}</p>
