@@ -12,10 +12,33 @@ const express = require("express");
 // Handles the handlebars
 // https://www.npmjs.com/package/hbs
 const hbs = require("hbs");
+
 // equal
-hbs.registerHelper("eq", function (a, b) {
-    var next = arguments[arguments.length - 1];
-    return a === b ? next.fn(this) : next.inverse(this);
+hbs.registerHelper("when", function (operand_1, operator, operand_2, options) {
+    var operators = {
+            eq: function (l, r) {
+                return l == r;
+            },
+            noteq: function (l, r) {
+                return l != r;
+            },
+            gt: function (l, r) {
+                return Number(l) > Number(r);
+            },
+            or: function (l, r) {
+                return l || r;
+            },
+            and: function (l, r) {
+                return l && r;
+            },
+            "%": function (l, r) {
+                return l % r === 0;
+            },
+        },
+        result = operators[operator](operand_1, operand_2);
+
+    if (result) return options.fn(this);
+    else return options.inverse(this);
 });
 
 const app = express();

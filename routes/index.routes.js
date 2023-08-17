@@ -7,9 +7,18 @@ const isLoggedIn = require("../middleware/isLoggedIn");
 
 /* GET home page */
 router.get("/", (req, res, next) => {
-  /*   const user = req.session.currentUser;
-  console.log(user); */
-  res.render("index");
+    const user = req.session.currentUser;
+    let putLayout = "";
+
+    if (user) {
+        putLayout = "layout-login.hbs";
+    } else {
+        putLayout = "layout.hbs";
+    }
+    res.render("index", {
+        userInSession: req.session.currentUser,
+        layout: putLayout,
+    });
 });
 
 /* GET How to Play Page LogOut */
@@ -19,18 +28,18 @@ router.get("/", (req, res, next) => {
 
 /* GET How to Play Page */
 router.get("/how-to-play", (req, res) => {
-  const user = req.session.currentUser;
-  let putLayout = "";
+    const user = req.session.currentUser;
+    let putLayout = "";
 
-  if (user) {
-    putLayout = "layout-login.hbs";
-  } else {
-    putLayout = "layout.hbs";
-  }
-  res.render("how-to-play", {
-    userInSession: req.session.currentUser,
-    layout: putLayout,
-  });
+    if (user) {
+        putLayout = "layout-login.hbs";
+    } else {
+        putLayout = "layout.hbs";
+    }
+    res.render("how-to-play", {
+        userInSession: req.session.currentUser,
+        layout: putLayout,
+    });
 });
 
 module.exports = router;
