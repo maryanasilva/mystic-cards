@@ -1,6 +1,6 @@
 <div id="login-form">
-  <h2>Log In</h2>
-  <form action="/auth/login" method="POST">
+  <h2 class="text-center fw-bolder mt-5">Login</h2>
+  {{!--   <form action="/auth/login" method="POST">
 
     <label>
       Username
@@ -18,6 +18,44 @@
     </label>
 
     <button type="submit">Log In</button>
+
+    {{#if errorMessage}}
+      <p class="error">{{errorMessage}}</p>
+    {{/if}} --}}
+
+  <form action="/auth/login" method="POST">
+    <div class="d-grid gap-2 col-6 col-6 mx-auto mt-5">
+      <div class="mb-3">
+        <label for="text" class="form-label">Username</label>
+        <input
+          type="text"
+          class="form-control"
+          name="username"
+          placeholder="Your username"
+        />
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Email address</label>
+        <input
+          type="email"
+          name="email"
+          class="form-control"
+          placeholder="Your email"
+        />
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Password</label>
+        <input
+          type="password"
+          name="password"
+          class="form-control"
+          placeholder="Your Password"
+        />
+      </div>
+    </div>
+    <div class="d-grid gap-1 col-1 mx-auto">
+      <button type="submit" class="btn btn-outline-warning">Submit</button>
+    </div>
 
     {{#if errorMessage}}
       <p class="error">{{errorMessage}}</p>
