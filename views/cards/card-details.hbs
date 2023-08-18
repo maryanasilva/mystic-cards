@@ -1,82 +1,88 @@
 <div class="container">
-    <div class="row-10 mt-3 d-flex border border-dark">
-        <div class="col-3 border border-dark">
-            <div class="card" style="width: 20rem;">
-                <img
-                    src="{{card.image_uris.large}}"
-                    class="card-img-top"
-                    alt="{{card.name}}"
-                />
-            </div>
-        </div>
-        <div class="col=6 mt-3 ms-3 border border-dark">
-            <div class="row-6">
-                <h3>{{card.name}}</h3>
-                <h4>{{card.type_line}}</h4>
-                <h4>{{card.rarity}}</h4>
-                <p>{{card.oracle_text}}</p>
-                <p>{{card.flavor_text}}</p>
-                <p>{{card.artist}}</p>
-                <p>{{card.released_at}}</p>
-                <p>Collector number: {{card.collector_number}}</p>
-            </div>
-
-        </div>
+  <div class="row-10 mt-5 d-flex">
+    <div class="col-3">
+      <div class="card" style="width: 20rem;">
+        <img
+          src="{{card.image_uris.large}}"
+          class="card-img-top"
+          alt="{{card.name}}"
+        />
+      </div>
     </div>
-    <div class="row">
-        {{#if user}}
-            <!-- Review Section -->
-            <h4>Leave a Review!</h4>
-            <!-- Form to Create a Review -->
-            <form action="/review/create/{{card._id}}" method="post">
-                <label for="content">Content</label>
-                <textarea
-                    name="content"
-                    id="content"
-                    cols="30"
-                    rows="3"
-                ></textarea>
-                <button type="submit">Create the review</button>
-            </form>
-            <!-- Favourites Button -->
-            {{#if isFav}}
-                <form action="/favourite/remove/{{card._id}}" method="post">
-                    <button type="submit"><i class="bi bi-bookmark-star-fill">
-                        </i></button>
-                </form>
-            {{else}}
-                <form action="/favourite/add/{{card._id}}" method="post">
-                    <button type="submit"><i
-                            class="bi bi-bookmark-star"
-                        ></i></button>
-                </form>
-            {{/if}}
-            <!-- End of the Form to Create a Review -->
-        {{/if}}
-
-        <div class="container mt-4">
-            <h1>Reviews</h1>
-            {{#each card.reviews}}
-                <div class="col border">
-                    <h6>{{author.username}}</h6>
-                </div>
-                <div class="col border">
-                    <p>{{content}}</p>
-                </div>
-                <div>
-                    {{#when author._id 'eq' ../user._id}}
-                        <div class="row">
-                            <form action="/cardDetails/delete/{{_id}}" method="post">
-                                <button
-                                    type="submit"
-                                    class="btn btn-secondary"
-                                >Delete</button>
-                            </form>
-                        </div>
-                    {{/when}}
-                </div>
-            {{/each}}
-        </div>
-        <br />
+    <div class="col=6 mt-3 ms-3">
+      <div class="row-6">
+        <h3>{{card.name}}</h3>
+        <h4>{{card.type_line}}</h4>
+        <h4>{{card.rarity}}</h4>
+        <p>{{card.oracle_text}}</p>
+        <p>{{card.flavor_text}}</p>
+        <p><i class="fw-lighter">artist:</i> {{card.artist}}</p>
+        <p><i class="fw-lighter">released at:</i> {{card.released_at}}</p>
+        <p><i class="fw-lighter">collector number:</i> {{card.collector_number}}</p>
+      </div>
+      <!-- Favourites Button -->
+      {{#if isFav}}
+        <form action="/favourite/remove/{{card._id}}" method="post">
+          <button type="submit"><i class="bi bi-bookmark-star-fill">
+            </i></button>
+        </form>
+      {{else}}
+        <form action="/favourite/add/{{card._id}}" method="post">
+          <button type="submit"><i class="bi bi-bookmark-star"></i></button>
+        </form>
+      {{/if}}
     </div>
+  </div><br /><br />
+
+  <div class="row">
+    {{#if user}}
+      <!-- Review Section -->
+      <h4>Leave a Review!</h4>
+      <!-- Form to Create a Review -->
+      <form action="/review/create/{{card._id}}" method="post">
+        <div class="d-grid mx-auto mt-1">
+          <div class="mb-3">
+            <textarea name="content" id="content" cols="30" rows="3"></textarea>
+          </div>
+          <div>
+            <button
+              type="submit"
+              class="btn btn-outline-warning"
+            >Submit</button>
+          </div>
+        </div>
+      </form>
+
+      <!-- End of the Form to Create a Review -->
+    {{/if}}
+
+    <div class="container mt-4">
+      <h4>Reviews</h4>
+      {{#each card.reviews}}
+        <div class="card shadow" style="width: 17rem;">
+          <div class="card-body">
+            <div class="col mt-3">
+              <h6>username: {{author.username}}</h6>
+            </div>
+            <div class="col">
+              <p>"{{content}}"</p>
+            </div>
+            <div>
+              {{#when author._id 'eq' ../user._id}}
+              <div class="row">
+                <form action="/cardDetails/delete/{{_id}}" method="post">
+                  <button
+                    type="submit"
+                    class="btn btn-outline-warning btn-sm"
+                  >Delete</button>
+                </form>
+              </div>
+              {{/when}}
+            </div>
+          </div>
+        </div><br>
+      {{/each}}
+    </div>
+    <br />
+  </div>
 </div>
