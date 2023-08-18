@@ -1,5 +1,5 @@
 <div class="container">
-    <div id="carouselExampleCaptions" class="carousel slide">
+    <div id="carouselExampleCaptions" class="carousel slide mb-5">
         <div class="carousel-indicators">
             <button
                 type="button"
@@ -30,11 +30,7 @@
         </div>
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img
-                    src="../images/slide1.png"
-                    class="d-block w-100"
-                    alt="..."
-                />
+                <img src="../images/slide1.png" class="d-block w-100" />
                 <div class="carousel-caption d-none d-md-block">
                     <a
                         type="button"
@@ -115,6 +111,25 @@
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Next</span>
         </button>
+    </div>
+
+    <div class="row">
+        {{#each randomCards}}
+            <div class="col-3 text-center">
+                <div class="row d-flex justify-content-center">
+                    <div class="row" style="width: 14rem">
+                        <img src="{{image_uris.normal}}" />
+                    </div>
+                </div>
+                {{#if ../isLog}}
+                    <a href="/cards/{{_id}}" class="btn btn-warning mt-3">See
+                        more!</a>
+                {{else}}
+                        <a href="/auth/login" class="btn btn-warning mt-3">See
+                        more!</a>
+                {{/if}}
+            </div>
+        {{/each}}
     </div>
 
 </div>

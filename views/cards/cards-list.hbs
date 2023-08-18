@@ -1,15 +1,21 @@
 <div class="container d-flex">
     <div class="row d-flex">
         {{#each cards}}
-            <div class="col-3 mt-3 border border-dark">
+            <div class="col-3 mt-5">
                 <div class="card" style="width: 16rem;">
                     <img
                         src="{{image_uris.normal}}"
                         class="card-img-top"
                         alt="{{name}}"
                     />
-                    <a href="/cards/{{_id}}" class="btn btn-primary">See more!</a>
+                    <a
+                        href="/cards/{{_id}}"
+                        class="btn btn-warning mt-2"
+                        target="_blank"
+                    >See more
+                        <i class="bi bi-arrow-right-short"></i></a>
                 </div>
+
             </div>
         {{/each}}
     </div>

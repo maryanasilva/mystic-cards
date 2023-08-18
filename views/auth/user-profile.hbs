@@ -1,57 +1,60 @@
 {{#if userInSession}}
-  <section>
-    <div>
-      <h1 class="text-center mt-5">Hello, {{userInSession.username}}!</h1>
-    </div>
-  </section>
-  <section>
-    <div class="d-flex justify-content-center">
-      {{!       <div class="col col-12"> }}
-      <div>
-        <div class="">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="100"
-            height="100"
-            fill="currentColor"
-            class="bi bi-person-vcard"
-            viewBox="0 0 16 16"
-          >
-            <path
-              d="M5 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4Zm4-2.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5ZM9 8a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4A.5.5 0 0 1 9 8Zm1 2.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5Z"
-            />
-            <path
-              d="M2 2a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H2ZM1 4a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H8.96c.026-.163.04-.33.04-.5C9 10.567 7.21 9 5 9c-2.086 0-3.8 1.398-3.984 3.181A1.006 1.006 0 0 1 1 12V4Z"
-            />
-          </svg>
-        </div>
-      </div>
-      <div class="row col-12 mt-5">
-        <div class="text-start mt-5">
-          <p class="fs-6"><b>username: </b>{{userInSession.username}}</p>
-          <p class="fs-6"><b>email: </b>{{userInSession.email}}</p>
-          <br />
-        </div>
-
+    <section>
         <div>
-          <i class="bi bi-card-text"></i>
-          <a
-            href="/myReviews"
-            class="link-warning link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
-          >My Reviews</a><br /><br />
-          <i class="bi bi-bookmark-star"></i>
-          <a
-            href="/myFavourites"
-            class="link-warning link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
-          >My Favourites</a>
+            <h1 class="text-center mt-5">Hello, {{userInSession.username}}!</h1>
         </div>
-      </div>
-    </div>
-    {{! </div> }}
-  </section>
+    </section>
+    <section>
+        <div class="d-flex justify-content-center">
+            <div class="col-8">
+                <div class="row-6 mt-5">
+                    <div class="">
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="100"
+                            height="100"
+                            fill="currentColor"
+                            class="bi bi-person-vcard"
+                            viewBox="0 0 16 16"
+                        >
+                            <path
+                                d="M5 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4Zm4-2.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5ZM9 8a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4A.5.5 0 0 1 9 8Zm1 2.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5Z"
+                            />
+                            <path
+                                d="M2 2a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H2ZM1 4a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H8.96c.026-.163.04-.33.04-.5C9 10.567 7.21 9 5 9c-2.086 0-3.8 1.398-3.984 3.181A1.006 1.006 0 0 1 1 12V4Z"
+                            />
+                        </svg>
+
+                    </div>
+                    <div class="row col-12">
+                        <div class="text-start">
+                            <p class="fs-6"><b>username:
+                                </b>{{userInSession.username}}</p>
+                            <p class="fs-6"><b>email:
+                                </b>{{userInSession.email}}</p>
+                            <br />
+                        </div>
+
+                        <div>
+                            <i class="bi bi-card-text"></i>
+                            <a
+                                href="/myReviews"
+                                class="link-warning link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
+                            >My Reviews</a><br /><br />
+                            <i class="bi bi-bookmark-star"></i>
+                            <a
+                                href="/myFavourites"
+                                class="link-warning link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
+                            >My Favourites</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
 {{else}}
-  <p>error</p>
+    <p>error</p>
 {{/if}}
 {{!-- <div class="ml-5 mt-5">
       <svg
